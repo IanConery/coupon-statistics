@@ -37,11 +37,21 @@ Prior habit is the single most powerful indicator of whether a driver will accep
 
 ![Bar Acceptance Subgroups](images/bar_acceptance_subgroups.png)
 
-### 3. Hypothesis & "Sweet Spot" Cohort
+### 3. Hypothesis & Combined Filter Analysis
 Combining the strongest positive signals identified a core customer segment:
-- **Hypothesis Group:** Drivers aged 26–30 who visit bars 4+ times a month and do not have children in the car.
-- **Results:** This group achieved an **84.1% acceptance rate** (n = 69).
-- **Caveat:** This specific cohort represents ~4% of total bar coupon responses and ~7% of all accepted coupons. While the sample size is small (n = 69), the conversion lift (+42.9% above baseline) provides a strong targeting signal.
+- **Hypothesis Group:** Drivers aged 26–30 who visit bars 4 or more times a month and do not have children in the car.
+- **Results:** This group achieved an **84.1% acceptance rate** (n = 69), representing a +42.9% conversion lift over the 41.2% baseline.
+- **Caveat:** This specific cohort represents ~4% of total bar coupon responses and ~7% of all accepted coupons. While the sample size is small (n = 69), the strong signal provides a compelling targeting profile.
+
+![Bar Combined Filters](images/bar_combined_filters.png)
+
+| Filter Applied | Acceptance Rate | Sample Size (n) | % of Total Accepted | Impact vs. Baseline |
+| :--- | :---: | :---: | :---: | :--- |
+| **All Bar Coupons (Baseline)** | **41.2%** | 1,913 | 100.0% | *Baseline* |
+| **No Children in Vehicle** | **43.5%** | 1,719 | 94.9% | +2.3% *(Baseline condition for ~90% of drivers)* |
+| **Age 25 to 30 Years Old** | **48.6%** | 368 | 22.7% | +7.4% *(Moderate positive indicator)* |
+| **Bar Visits 4+ a Month** | **76.2%** | 193 | 18.7% | **+35.0%** *(The primary driver)* |
+| **All Three Combined** | **84.1%** | **69** | **7.4%** | **+42.9%** *(Highest conversion peak)* |
 
 ---
 
@@ -68,12 +78,29 @@ Based on initial observations, I formulated and tested the following hypothesis:
 
 ![Coffee Hypothesis Test](images/coffee_hypothesis_test.png)
 
+| Cohort / Scenario | Acceptance Rate | Sample Size (n) | % of Total Accepted | Impact vs. Baseline |
+| :--- | :---: | :---: | :---: | :--- |
+| **All Coffee Coupons (Baseline)** | **49.6%** | 3,816 | 100.0% | *Baseline* |
+| **All Other Coffee Drivers** | **47.3%** | 3,587 | 89.7% | -2.3% *(Non-targeted drivers)* |
+| **Inclement Morning (Rain/Snow + 7/10 AM + Frequent)** | **80.8%** | 78 | 3.3% | **+31.2%** *(Weather-driven morning demand)* |
+| **Social Morning (Friends + 10 AM + Frequent)** | **88.1%** | 151 | 7.0% | **+38.5%** *(Social morning demand)* |
+| **Combined Target Group (Social OR Inclement Morning)** | **85.6%** | **229** | **10.3%** | **+36.0%** *(Overall target group)* |
+
 ### 3. Comprehensive 21-Feature Impact Analysis
-To determine how much each individual column influenced the decision to accept or reject a coffee coupon, I evaluated all 21 relevant predictor columns across their constituent categories:
+To determine how much each individual column influenced the decision to accept or reject a coffee coupon, I evaluated all 21 relevant predictor columns across their constituent categories using human-readable labels:
 
 - **Impact Spread:** Past coffee house visit frequency created the widest performance gap (**50.7% spread** between 4+ visits and never), followed by occupation (**38.4%**) and time of day (**22.3%**). Demographics such as gender and having children had virtually zero impact (~1% spread).
 
 ![Coffee Feature Impact Spread](images/coffee_feature_impact_forest_plot.png)
+
+#### Subgroup Forest Plot with 95% Confidence Intervals
+Breaking down each feature into its specific categories across Context, Demographics, and Dining Habits reveals which driver profiles deviate significantly from the 49.6% baseline:
+
+- **Significantly Above Baseline (Green):** Frequent coffee house visitors (1–3/mo and 4–8/mo), drivers traveling with friends, mid-morning travelers (10 AM), sunny warm afternoons (2 PM), and drivers with 1-day expiration windows.
+- **Significantly Below Baseline (Red):** Drivers who never visit coffee houses, evening travelers (6 PM / 10 PM), drivers traveling home or to work, and drivers traveling alone.
+- **Neutral (Gray):** Gender, marital status, and having children show confidence intervals that overlap the baseline mean, demonstrating little to no meaningful influence on acceptance.
+
+![Coffee Subgroups Forest Plot](images/coffee_subgroups_forest_plot.png)
 
 ---
 
@@ -90,6 +117,6 @@ To determine how much each individual column influenced the decision to accept o
 
 ## Next Steps
 
-1. **A/B Pilot Testing:** Conduct a real-world pilot targeting the identified sweet spots (young adult frequent bar goers without children; morning coffee commuters in rain/snow) to measure conversion lift against a baseline control group.
+1. **A/B Pilot Testing:** Conduct a real-world pilot targeting the identified high-acceptance segments (young adult frequent bar goers without children; morning coffee commuters in rain/snow) to measure conversion lift against a baseline control group.
 2. **Address Survey Sampling Gaps:** Collect additional survey or telematics data on passenger trips during inclement weather to see if the presence of friends reinforces coffee acceptance in the rain or snow as it does on sunny days.
 3. **Predictive Scoring Model:** Train a classification model (e.g., Logistic Regression or a Tree-based ensemble) using the 21 predictor features to generate real-time acceptance probability scores for each driver before dispatching a coupon.
