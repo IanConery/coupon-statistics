@@ -87,7 +87,7 @@ Based on initial observations, I formulated and tested the following hypothesis:
 | **Combined Target Group (Social OR Inclement Morning)** | **85.6%** | **229** | **10.3%** | **+36.0%** *(Overall target group)* |
 
 ### 3. Comprehensive 21-Feature Impact Analysis
-To determine how much each individual column influenced the decision to accept or reject a coffee coupon, I evaluated all 21 relevant predictor columns across their constituent categories using human-readable labels:
+To determine how much each individual column influenced the decision to accept or reject a coffee coupon, I evaluated all 21 relevant predictor columns across their constituent categories:
 
 - **Impact Spread:** Past coffee house visit frequency created the widest performance gap (**50.7% spread** between 4+ visits and never), followed by occupation (**38.4%**) and time of day (**22.3%**). Demographics such as gender and having children had virtually zero impact (~1% spread).
 
@@ -108,9 +108,9 @@ Breaking down each feature into its specific categories across Context, Demograp
 
 1. **Prioritize Frequency Over Demographics:** Allocate promotional budget toward customers with established habits (visiting >= 1 time a month). Habitual drivers convert at 75%–88%, making them far more responsive than non-patrons.
 2. **Context-Aware Morning Coffee Triggers:**
-   - Automate delivery of 2-hour coffee promotions between **7 AM and 10 AM**.
-   - Deploy dynamic weather triggers to send coffee offers to morning drivers during local rain or snow events.
-   - Deploy group-oriented coffee promotions around 10 AM when vehicle telemetry indicates multiple passengers or friends in the car.
+   - Automate delivery of coffee promotions between **7 AM and 10 AM**.
+   - Use weather triggers to send coffee offers to morning drivers during local rain or snow events.
+   - Use group-oriented coffee promotions around 10 AM when vehicle telemetry indicates multiple passengers or friends in the car.
 3. **Negative Filtering for Bar Coupons:** Suppress mobile bar promotions when child passengers are detected in the vehicle or during morning/commute hours.
 
 ---
@@ -119,4 +119,4 @@ Breaking down each feature into its specific categories across Context, Demograp
 
 1. **A/B Pilot Testing:** Conduct a real-world pilot targeting the identified high-acceptance segments (young adult frequent bar goers without children; morning coffee commuters in rain/snow) to measure conversion lift against a baseline control group.
 2. **Address Survey Sampling Gaps:** Collect additional survey or telematics data on passenger trips during inclement weather to see if the presence of friends reinforces coffee acceptance in the rain or snow as it does on sunny days.
-3. **Predictive Scoring Model:** Train a classification model (e.g., Logistic Regression or a Tree-based ensemble) using the 21 predictor features to generate real-time acceptance probability scores for each driver before dispatching a coupon.
+3. **Predictive Scoring Model:** Train a classification model (logistic regression or a tree-based ensemble) using the 21 predictor features to generate real-time acceptance probability scores for each driver before dispatching a coupon.
